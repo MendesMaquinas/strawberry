@@ -12,11 +12,9 @@ svg path {
     0% {
         stroke-dashoffset: 50;
     }
-
     80% {
         fill: transparent
     }
-
     100% {
         fill: #d9adb3;
         stroke-dashoffset: 0;

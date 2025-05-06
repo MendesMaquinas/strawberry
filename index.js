@@ -2,13 +2,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const container = document.getElementById("container");
   const TOTAL_IMAGES = container.clientWidth < 720 ? 15 : 30;
   const imgSizes = [24, 32, 40, 48, 16, 20, 72];
+  
+  createRandomImages(); // Chama a função ao carregar a página
 
   function getRandomPosition(max) {
     return Math.floor(Math.random() * max);
-  }
-
-  function elegiblePosition(container, title) {
-    
   }
 
   function createRandomImages() {
@@ -32,23 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  createRandomImages(); // Chama a função ao carregar a página
-
-  const tl = gsap.timeline({});
-  gsap.utils.toArray(".image").forEach((img) => {
-    gsap.fromTo(
-      img,
-      { opacity: 0 },
-      {
-        opacity: 1,
-        duration: 1, // Tempo da animação
-        delay: Math.random() * 2, // Atraso aleatório entre 0 e 2 segundos
-        ease: "power2.out",
-        rotate: Math.floor(Math.random() * 360),
-      }
-    );
-  });
-
+  
   gsap.utils.toArray(".image").forEach((img) => {
     gsap.to(img, {
       y: () => gsap.utils.random(-700, 500), // Movimenta cada imagem aleatoriamente
@@ -61,4 +43,31 @@ document.addEventListener("DOMContentLoaded", function () {
       },
     });
   });
+
+  animateShowImages()
+});
+
+function animateShowImages() {
+  //gsap.utils.toArray(".image").forEach((img) => {
+    gsap.fromTo(
+      "img",
+      { opacity: 0 },
+      {
+        opacity: 1,
+        duration: 1, // Tempo da animação
+        delay: Math.random() * 2, // Atraso aleatório entre 0 e 2 segundos
+        ease: "power2.out",
+        rotate: "+=" + Math.floor(Math.random() * 360),
+        stagger: 0.1,
+        //transformOrigin: "bottom left",
+      }
+    );
+ // });
+}
+
+document.addEventListener("scroll", function() {
+  const scrollY = window.scrollY;
+  const scrollX = window.scrollX;
+  console.log("Posição de rolagem vertical:", scrollY);
+  console.log("Posição de rolagem horizontal:", scrollX);
 });
