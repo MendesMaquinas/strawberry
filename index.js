@@ -1,9 +1,9 @@
 document.addEventListener("DOMContentLoaded", function () {
   const container = document.getElementById("container");
   const TOTAL_IMAGES = container.clientWidth < 720 ? 15 : 30;
-  const imgSizes = [24, 32, 40, 48, 16, 20, 72];
+  const IMG_SIZES = [24, 32, 40, 48, 16, 20, 72];
   
-  createRandomImages(); // Chama a função ao carregar a página
+  createRandomImages();
 
   function getRandomPosition(max) {
     return Math.floor(Math.random() * max);
@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function createRandomImages() {
     for (let i = 0; i < TOTAL_IMAGES; i++) {
       const img = document.createElement("img");
-      const size = imgSizes[Math.floor(Math.random() * imgSizes.length)];
+      const size = IMG_SIZES[Math.floor(Math.random() * IMG_SIZES.length)];
       img.src = "morango.png";
       img.classList.add("image");
       img.classList.add("absolute");
@@ -48,21 +48,19 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function animateShowImages() {
-  //gsap.utils.toArray(".image").forEach((img) => {
     gsap.fromTo(
       "img",
       { opacity: 0 },
       {
         opacity: 1,
-        duration: 1, // Tempo da animação
-        delay: Math.random() * 2, // Atraso aleatório entre 0 e 2 segundos
+        duration: 1,
+        delay: Math.random() * 2,
         ease: "power2.out",
         rotate: "+=" + Math.floor(Math.random() * 360),
         stagger: 0.1,
-        //transformOrigin: "bottom left",
       }
     );
- // });
+
 }
 
 document.addEventListener("scroll", function() {
