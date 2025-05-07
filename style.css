@@ -5,7 +5,12 @@ svg path {
     stroke-width: 0.1;
     stroke-dasharray: 50;
     stroke-dashoffset: 50;
-    animation: textAnim 4s ease-in-out 1 forwards; 
+    animation: textAnim 4s ease-in-out 1 forwards;
+    z-index: 2;
+}
+
+img {
+    z-index: 1;
 }
 
   @keyframes textAnim {

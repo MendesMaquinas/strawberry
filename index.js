@@ -50,13 +50,15 @@ document.addEventListener("DOMContentLoaded", function () {
 function animateShowImages() {
     gsap.fromTo(
       "img",
-      { opacity: 0 },
+      { opacity: 0, scale: 0, },
+      
       {
         opacity: 1,
+        scale: 1, 
         duration: 1,
         delay: Math.random() * 2,
         ease: "power2.out",
-        rotate: "+=" + Math.floor(Math.random() * 360),
+        rotate: "+=" + Math.floor(Math.random() * 180),
         stagger: 0.1,
       }
     );
